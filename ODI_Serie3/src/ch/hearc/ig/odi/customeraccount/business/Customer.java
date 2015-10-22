@@ -25,7 +25,7 @@ public class Customer {
 	 * @param number
 	 */
 	public Account getAccountByNumber(String number) {
-
+            return null;
 	}
 
 	/**
