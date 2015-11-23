@@ -12,5 +12,4 @@
  
 	<html:outputText value="Hello le World ! (en JSF !)" />
  
- 
 </core:view>

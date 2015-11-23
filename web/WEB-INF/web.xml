@@ -30,3 +30,4 @@
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <!-- Fin de la configuration de JSF -->
+</web-app>
