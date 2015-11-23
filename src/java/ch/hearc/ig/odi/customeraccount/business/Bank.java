@@ -70,8 +70,10 @@ public class Bank {
     }
     
     
-    public void addCustomer(int number, String fn, String ln){
-        customers.add(new Customer(number, fn, ln));
+    public Customer addCustomer(int number, String fn, String ln){
+        Customer customer = new Customer(number, fn, ln);
+        customers.add(customer);
+        return customer;
     }
     
     public void addAccount(String number, String name, double rate, Customer customer) {
@@ -81,4 +83,10 @@ public class Bank {
         }else
             System.out.println("!! An Account can only be added to a Customer already registered !!");
     }
+
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+    
+    
 }
