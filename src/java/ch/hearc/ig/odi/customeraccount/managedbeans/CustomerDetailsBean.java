@@ -17,7 +17,7 @@ import javax.inject.Named;
 /**
  * Details du client
  *
- * @author thoma
+ * @author thibault.daucourt
  */
 @Stateful
 @SessionScoped

@@ -53,7 +53,9 @@
                     #{acc.rate}
                 </h:column>
                 
-                
+                <h:column>
+                    <h:commandLink value="#{msg.details}" action="#{accountDetailsBean.initAccount(acc.number)}"/>
+                </h:column>
                 
             </h:dataTable>
             
