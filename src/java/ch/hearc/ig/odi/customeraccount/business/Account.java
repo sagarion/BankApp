@@ -102,4 +102,14 @@ public class Account {
 		this.rate = rate;
 	}
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+        
+        
+
 }

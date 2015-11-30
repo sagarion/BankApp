@@ -1,5 +1,6 @@
 package ch.hearc.ig.odi.customeraccount.service;
 
+import ch.hearc.ig.odi.customeraccount.business.Account;
 import ch.hearc.ig.odi.customeraccount.business.Bank;
 import ch.hearc.ig.odi.customeraccount.business.Customer;
 import java.io.Serializable;
@@ -42,6 +43,17 @@ public class Services implements Serializable{
     public void saveCustomer(Integer number, String fn, String ln){
         bank.addCustomer(number, fn, ln);
     }
+    
+    /**
+     * Dit à la banque de créer un nouveau compte
+     * @param number le numéro du compte
+     * @param name le nom du compte
+     * @param rate le taux
+     * @param customer le client auquel appartient le compte
+     */
+    public void saveAccount(String number, String name, double rate, Customer customer){
+        bank.addAccount(number, name, rate, customer);
+    }
 
     /**
      * Retourne le client de la banque qui correspond au numéro passé en paramètre.
@@ -53,10 +65,10 @@ public class Services implements Serializable{
     }
     
     /**
-     * Retourne une Map contenant tous les clients de la banqe
-     * @return Une Map contenant tous les clients de la banqe
+     * Retourne une Map contenant tous les clients de la banque
+     * @return Une Map contenant tous les clients de la banque
      */
-    public ArrayList<Customer> getCustomers(){
+    public Map<Integer, Customer> getCustomers(){
         return bank.getCustomers();
     }
     
@@ -66,6 +78,15 @@ public class Services implements Serializable{
      * @return Une List contenant tous les clients de la banque.
      */
     public List<Customer> getCustomersList(){
-        return new ArrayList(getCustomers());
+        return new ArrayList(getCustomers().values());
+    }
+    
+    /**
+     * Retourne un Account lorsqu'on spécifie un numéro valable
+     * @param number le numéro du compte
+     * @return l'account recherché
+     */
+    public Account getAccountByNumber(String number){
+        return bank.getAccountByNumber(number);
     }
 }

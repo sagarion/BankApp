@@ -5,88 +5,62 @@
  */
 package ch.hearc.ig.odi.customeraccount.business;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- *
+ * Classe Banque
+ * 
  * @author thibault.daucourt
  */
+
+
 public class Bank {
+
     int number;
     String name;
-    ArrayList<Customer> customers;
-    ArrayList<Account> accounts;
+    Map<Integer, Customer> customers;
+    Map<String, Account> accounts;
 
-    public Bank() {
-    }
-
+    /**
+     *
+     * @param number
+     * @param name
+     */
     public Bank(int number, String name) {
         this.number = number;
         this.name = name;
+
+        customers = new HashMap();
+        accounts = new HashMap();
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public Customer getCustomerByNumber(int Number){
-        Customer CustomerReturned = new Customer(-1,"inconnu","inconnu");
-        int index = 0;
-        
-        while(CustomerReturned.getNumber() == -1 && index < customers.size()){
-            if (number == customers.get(index).getNumber()) {
-                CustomerReturned = customers.get(index);
-            }
-            index += 1;
-        }
-        
-        return CustomerReturned;
-    }
-    
-    public Account getAccountrByNumber(String Number){
-        Account AccountReturned = new Account("inconnu","inconnu",-1, new Customer(-1,"inconnu","inconnu"));
-        int index = 0;
-        
-        while(AccountReturned.getNumber() == "inconnu" && index < accounts.size()){
-            if (Number == accounts.get(index).getNumber()) {
-                AccountReturned = accounts.get(index);
-            }
-            index += 1;
-        }
-        
-        return AccountReturned;
-    }
-    
-    
-    public Customer addCustomer(int number, String fn, String ln){
-        Customer customer = new Customer(number, fn, ln);
-        customers.add(customer);
-        return customer;
-    }
-    
-    public void addAccount(String number, String name, double rate, Customer customer) {
-        if (getCustomerByNumber(customer.getNumber()) == customer) {
-            customer.addAccount(number, name, rate);
-            accounts.add(new Account(number, name, rate, customer));
-        }else
-            System.out.println("!! An Account can only be added to a Customer already registered !!");
-    }
-
-    public ArrayList<Customer> getCustomers() {
+    public Map getCustomers() {
         return customers;
     }
-    
-    
+
+    public Map getAccounts() {
+        return accounts;
+    }
+
+    public Account getAccountByNumber(String number) {
+        return accounts.get(number);
+    }
+
+    public Customer getCustomerByNumber(int number) {
+        return customers.get(number);
+    }
+
+    public Customer addCustomer(int number, String firstName, String lastName) {
+        Customer customer = new Customer(number, firstName, lastName);
+        customers.put(number, customer);
+        return customer;
+    }
+
+    public Account addAccount(String number, String name, double rate, Customer customer) {
+        Account account = new Account(number, name, rate, customer);
+        accounts.put(number, account);
+        customer.addAccount(account);
+        return account;
+    }
 }

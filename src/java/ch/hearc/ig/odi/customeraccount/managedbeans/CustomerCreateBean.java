@@ -13,7 +13,7 @@ import javax.inject.Named;
 /**
  * Permet d'ajouter des clients.
  *
- * @author thoma
+ * @author thibault.daucourt
  */
 
 @Stateful
