@@ -41,6 +41,10 @@ and open the template in the editor.
                     #{cust.lastName}
                 </h:column>
                 
+                <h:column>
+                    <h:commandLink value="#{msg.details}" action="#{customerDetailsBean.initCustomer(cust.number)}"/>
+                </h:column>
+                
             </h:dataTable>
         
         </h:form>
